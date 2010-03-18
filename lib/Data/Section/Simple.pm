@@ -2,7 +2,7 @@ package Data::Section::Simple;
 
 use strict;
 use 5.008_001;
-our $VERSION = '0.01';
+our $VERSION = '0.02';
 
 use base qw(Exporter);
 our @EXPORT_OK = qw(get_data_section);
@@ -19,7 +19,7 @@ sub get_data_section {
         return $self->get_data_section->{$_[0]};
     } else {
         my $d = do { no strict 'refs'; \*{$self->{package}."::DATA"} };
-        return unless fileno $d;
+        return unless defined fileno $d;
 
         seek $d, 0, 0;
         my $content = join '', <$d>;
@@ -81,15 +81,31 @@ C<__DATA__> section of the file.
 
 =head1 LIMITATIONS
 
-As the name suggests, it's a very simple version of what
-L<Data::Section> does. If you want more functionalities such as
+As the name suggests, this module is a simpler version of the
+excellent L<Data::Section>. If you want more functionalities such as
 merging data sections or changing header patterns, use
 L<Data::Section> instead.
 
 This module does not implement caching (yet) which means in every
-C<get_data_section> or C<< get_data_section($name) >> seeks and reads
-the data section every time it's called. If you want to avoid doing
-so, you should implement caching in your own caller code.
+C<get_data_section> or C<< get_data_section($name) >> this module
+seeks and re-reads the data section. If you want to avoid doing so for
+the better performance, you should implement caching in your own
+caller code.
+
+=head1 BUGS
+
+If you data section has literal C<__DATA__> in the data section, this
+module might be tricked by that. Although since its pattern match is
+greedy, C<__DATA__> appearing I<before> the actual data section
+(i.e. in the code) might be okay.
+
+This is by design -- in thoery you can C<tell> the DATA handle before
+reading it, but then reloading the data section of the file (handy for
+developing inline templates with PSGI web applications) would fail
+because the pos would be changed.
+
+If you don't like this design, again, use the superior
+L<Data::Section>.
 
 =head1 AUTHOR
 
