@@ -2,7 +2,7 @@ package Data::Section::Simple;
 
 use strict;
 use 5.008_001;
-our $VERSION = '0.03';
+our $VERSION = '0.04';
 
 use base qw(Exporter);
 our @EXPORT_OK = qw(get_data_section);
@@ -16,7 +16,9 @@ sub get_data_section {
     my $self = ref $_[0] ? shift : __PACKAGE__->new(scalar caller);
 
     if (@_) {
-        return $self->get_data_section->{$_[0]};
+        my $all = $self->get_data_section;
+        return unless $all;
+        return $all->{$_[0]};
     } else {
         my $d = do { no strict 'refs'; \*{$self->{package}."::DATA"} };
         return unless defined fileno $d;

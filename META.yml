@@ -3,27 +3,21 @@ abstract: 'Read data from __DATA__'
 author:
   - 'Tatsuhiko Miyagawa <miyagawa@bulknews.net>'
 build_requires:
-  ExtUtils::MakeMaker: 6.42
   Test::More: 0.88
   Test::Requires: 0
 configure_requires:
-  ExtUtils::MakeMaker: 6.42
-distribution_type: module
-generated_by: 'Module::Install version 1.01'
+  Module::Build::Tiny: 0.013
+dynamic_config: 0
+generated_by: 'Dist::Milla version v0.9.1, Dist::Zilla version 4.300032, CPAN::Meta::Converter version 2.130870'
 license: perl
 meta-spec:
   url: http://module-build.sourceforge.net/META-spec-v1.4.html
   version: 1.4
-module_name: Data::Section::Simple
 name: Data-Section-Simple
-no_index:
-  directory:
-    - inc
-    - t
-    - xt
 requires:
-  perl: 5.8.1
+  perl: 5.008001
 resources:
-  license: http://dev.perl.org/licenses/
-  repository: git://github.com/miyagawa/Data-Section-Simple.git
-version: 0.03
+  bugtracker: https://github.com/miyagawa/Data-Section-Simple/issues
+  homepage: https://github.com/miyagawa/Data-Section-Simple
+  repository: https://github.com/miyagawa/Data-Section-Simple.git
+version: 0.04
