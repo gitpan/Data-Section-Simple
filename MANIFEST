@@ -1,14 +1,13 @@
-Build.PL
 Changes
 LICENSE
 MANIFEST
 META.json
 META.yml
+Makefile.PL
 README
 cpanfile
 dist.ini
 lib/Data/Section/Simple.pm
-t/00-compile.t
 t/DataInCode.pm
 t/Foo.pm
 t/basic.t
