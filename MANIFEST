@@ -13,7 +13,6 @@ t/DataInCode.pm
 t/Foo.pm
 t/basic.t
 t/data.t
-t/multi-processes.t
 t/no-datat.t
 t/pkg_oo.t
 t/release-pod-syntax.t

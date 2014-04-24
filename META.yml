@@ -28,7 +28,7 @@ resources:
   bugtracker: https://github.com/miyagawa/Data-Section-Simple/issues
   homepage: https://github.com/miyagawa/Data-Section-Simple
   repository: https://github.com/miyagawa/Data-Section-Simple.git
-version: '0.06'
+version: '0.07'
 x_contributors:
   - 'Bruce Gray <bruce.gray@acm.org>'
   - 'HIROSE Masaaki <hirose31@gmail.com>'
